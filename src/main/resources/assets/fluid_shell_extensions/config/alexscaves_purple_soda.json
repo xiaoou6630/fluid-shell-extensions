@@ -1,0 +1,60 @@
+{
+  "enabled": true,
+  "fluid": "alexscaves:purple_soda",
+  "stages": [
+    {
+      "min_amount": 1000,
+      "max_amount": 1999,
+      "effects": [
+        {
+          "type": "place_fluid",
+          "place_fluid": {
+            "radius": 0,
+            "check_air": true
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        },
+        {
+          "type": "particle",
+          "particle": {
+            "type": "bubble",
+            "count": 20,
+            "spread": 1.0
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        }
+      ]
+    },
+    {
+      "min_amount": 2000,
+      "max_amount": -1,
+      "effects": [
+        {
+          "type": "place_fluid",
+          "place_fluid": {
+            "radius": 1,
+            "check_air": true
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        },
+        {
+          "type": "particle",
+          "particle": {
+            "type": "bubble",
+            "count": 50,
+            "spread": 2.0
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        }
+      ]
+    }
+  ]
+}

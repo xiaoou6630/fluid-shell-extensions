@@ -1,0 +1,38 @@
+{
+  "enabled": true,
+  "fluid": "alexscaves:acid",
+  "stages": [
+    {
+      "min_amount": 1000,
+      "max_amount": 1999,
+      "effects": [
+        {
+          "type": "place_fluid",
+          "place_fluid": {
+            "radius": 0,
+            "check_air": true
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        }
+      ]
+    },
+    {
+      "min_amount": 2000,
+      "max_amount": -1,
+      "effects": [
+        {
+          "type": "place_fluid",
+          "place_fluid": {
+            "radius": 1,
+            "check_air": true
+          },
+          "condition": {
+            "mod": "alexscaves"
+          }
+        }
+      ]
+    }
+  ]
+}

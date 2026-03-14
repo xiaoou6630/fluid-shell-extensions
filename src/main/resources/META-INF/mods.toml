@@ -1,0 +1,47 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://space.bilibili.com/1121689945?spm_id_from=333.788.upinfo.head.click"
+license = "MIT"
+
+[[mods]]
+modId = "fluid_shell_extensions"
+version = "${version}"
+displayName = "Fluid Shell Extensions"
+authors = "xiaoou6630 deepseek"
+description = "扩展了流体炮弹的效果，实现更多液体的功能"
+logoFile = "icon.png"
+
+[[dependencies.fluid_shell_extensions]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fluid_shell_extensions]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fluid_shell_extensions]]
+modId = "create"
+mandatory = true
+versionRange = "[6.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fluid_shell_extensions]]
+modId = "createbigcannons"
+mandatory = true
+versionRange = "[5.10.2,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fluid_shell_extensions]]
+modId = "alexscaves"
+mandatory = false
+versionRange = "[2.0,)"
+ordering = "NONE"
+side = "BOTH"

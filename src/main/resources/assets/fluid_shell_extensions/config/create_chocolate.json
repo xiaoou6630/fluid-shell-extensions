@@ -1,0 +1,34 @@
+{
+  "enabled": true,
+  "fluid": "create:chocolate",
+  "stages": [
+    {
+      "min_amount": 1000,
+      "max_amount": 1999,
+      "effects": [
+        {
+          "type": "place_fluid",
+          "place_fluid": {
+            "radius": 0,
+            "check_air": true
+          }
+        }
+      ]
+    },
+    {
+      "min_amount": 2000,
+      "max_amount": -1,
+      "effects": [
+        {
+          "type": "spawn_items",
+          "spawn_items": {
+            "item": "create:bar_of_chocolate",
+            "min_count": 1,
+            "max_count": 9,
+            "chance": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

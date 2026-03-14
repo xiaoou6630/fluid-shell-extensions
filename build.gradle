@@ -1,0 +1,115 @@
+buildscript {
+    repositories {
+        // TUNA 镜像（包含 Forge 和 MavenCentral）
+        maven {
+            name = "TUNA Forge"
+            url = "https://mirrors.tuna.tsinghua.edu.cn/forge/"
+        }
+        maven {
+            name = "TUNA Maven"
+            url = "https://mirrors.tuna.tsinghua.edu.cn/maven2/"
+        }
+        // 备用：阿里云镜像
+        maven {
+            name = "Aliyun Maven"
+            url = "https://maven.aliyun.com/repository/public"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:5.1.+'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+version = '1.0.0'
+group = 'net.xiaoou.chocolatecannon'
+archivesBaseName = 'chocolatecannon'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                chocolatecannon {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                chocolatecannon {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+repositories {
+    // 所有依赖都走 TUNA
+    maven {
+        name = "TUNA Maven"
+        url = "https://mirrors.tuna.tsinghua.edu.cn/maven2/"
+    }
+    maven {
+        name = "TUNA Forge"
+        url = "https://mirrors.tuna.tsinghua.edu.cn/forge/"
+    }
+    // Create 的 Maven
+    maven {
+        name = "tterrag"
+        url = "https://maven.tterrag.com/"
+    }
+    // CurseMaven 代理
+    maven {
+        name = "CurseMaven TUNA Proxy"
+        url = "https://mirrors.tuna.tsinghua.edu.cn/curseforge/maven/"
+    }
+    // 本地依赖
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    // Forge - 会从 TUNA 下载
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    
+    // Create Mod
+    compileOnly fg.deobf('com.simibubi.create:create:1.20.1-6.0.8')
+    
+    // Create Big Cannons Mod
+    compileOnly fg.deobf('rbasamoyai.createbigcannons:createbigcannons:5.10.2+mc.1.20.1-forge')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+build {
+    dependsOn 'reobfJar'
+}
